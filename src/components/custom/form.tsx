@@ -31,7 +31,7 @@ function MyForm() {
       name: 'Leofmoura',
       email: '',
       password: 'sdasdasdasd1sdads1',
-      tags: ['asdasd', 'asdasd1'],
+      tags: [{ value: 'asdasd' }],
     },
   });
   const {
@@ -130,7 +130,7 @@ function MyForm() {
           <h2 className='font-bold'>Tags:</h2>
           <Button
             type='button'
-            onClick={() => append('')}
+            onClick={() => append({ value: '' })}
           >
             <Plus />
             Add
@@ -144,15 +144,15 @@ function MyForm() {
             <FormField
               {...form.register(`tags.${index}`)}
               control={form.control}
-              render={({ tag }) => (
+              render={({ field: tag }) => (
                 <>
                   <FormItem>
                     <FormLabel>{index + 1}.</FormLabel>
                     <FormControl>
                       <Input
-                        {...form.register(`tags.${index}`)}
+                        {...form.register(`tags.${index}.value`)}
                         type='text'
-                        {...tag}
+                        {...tag.value}
                       />
                     </FormControl>
                     <FormMessage />
