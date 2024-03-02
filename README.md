@@ -1,3 +1,11 @@
+## React form using React hook form
+
+Here you can see a modern form using tailwind, shadcn, react-hook-form.
+
+Next step will be adding react features like react hook state.
+
+Also, I want o implement nextjs server action using TanQuery and shadcn table.
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
