@@ -3,7 +3,7 @@
 import React from 'react';
 import { Button } from '../ui/button';
 import { Input } from '../ui/input';
-import { useFieldArray, useForm } from 'react-hook-form';
+import { Controller, useFieldArray, useForm } from 'react-hook-form';
 import { z } from 'zod';
 import { formSchema } from '../schemas/form-schema';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -18,8 +18,7 @@ import {
 } from '../ui/form';
 import { toast } from '../ui/use-toast';
 import { Separator } from '../ui/separator';
-import { Minus, MoveUp, Plus } from 'lucide-react';
-import { DevTool } from '@hookform/devtools';
+import { Plus } from 'lucide-react';
 
 export type FormInputs = z.infer<typeof formSchema>;
 
@@ -35,14 +34,9 @@ function MyForm() {
     },
   });
   const {
-    fields: tags,
-    append,
-    prepend,
-    remove,
-    swap,
-    move,
-    insert,
-  } = useFieldArray({
+    formState: { errors },
+  } = form;
+  const { fields: tags, append } = useFieldArray({
     control: form.control, // control props comes from useForm (optional: if you are using FormContext)
     name: 'tags', // unique name for your Field Array
   });
@@ -54,15 +48,9 @@ function MyForm() {
     });
   };
 
-  const onError = (data: any) => {
-    // toast({
-    //   title: 'Form is good!',
-    //   variant: 'destructive',
-    //   description: JSON.stringify(data),
-    // });
+  const onError = (errors: any) => {
+    console.log(errors);
   };
-
-  // console.info(form.watch());
 
   return (
     <Form {...form}>
@@ -137,41 +125,25 @@ function MyForm() {
           </Button>
         </div>
         {tags.map((tag, index) => (
-          <div
-            className='pl-8'
+          <FormField
             key={tag.id}
-          >
-            <FormField
-              {...form.register(`tags.${index}`)}
-              control={form.control}
-              render={({ field: tag }) => (
-                <>
-                  <FormItem>
-                    <FormLabel>{index + 1}.</FormLabel>
-                    <FormControl>
-                      <Input
-                        {...form.register(`tags.${index}.value`)}
-                        type='text'
-                        {...tag.value}
-                      />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                  <Button
-                    type='button'
-                    onClick={() => remove(index)}
-                  >
-                    <Minus />
-                    Remove
-                  </Button>
-                </>
-              )}
-            />
-          </div>
+            control={form.control}
+            name={`tags.${index}.value`}
+            render={({ field }) => (
+              <FormItem>
+                <FormControl>
+                  <Input
+                    placeholder={`Tag ${index + 1}`}
+                    {...form.register(`tags.${index}.value`)}
+                  />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
         ))}
         <Button type='submit'>Submit</Button>
       </form>
-      <DevTool control={form.control} />
     </Form>
   );
 }
