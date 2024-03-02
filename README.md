@@ -1,4 +1,4 @@
-![Build Status](https://github.com/leofmoura/react-modern-form/actions/workflows/build.yml/badge.svg)
+![Build Status -](https://github.com/leofmoura/react-modern-form/actions/workflows/build.yml/badge.svg)
 
 ## React form using React hook form
 
