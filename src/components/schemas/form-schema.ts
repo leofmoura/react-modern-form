@@ -12,5 +12,5 @@ export const formSchema = z.object({
     ),
   email: z.string().email('Email is invalid.').or(z.literal('')),
   password: z.string({}).min(12, 'Password should have at least 12 of lenght'),
-  tags: z.array(z.object({ value: z.string().min(1, 'Mandatory') })),
+  tags: z.array(z.object({ value: z.string().min(1, 'Mandatory 2') })),
 });
