@@ -1,5 +1,5 @@
 https://github.com/leofmoura/react-modern-form/.github/workflows/build.yml/badge.svg)](https://github.com/leofmoura/react-modern-form/actions/workflows/build.yml/badge.svg
-
+![example workflow](https://github.com/github/docs/actions/workflows/main.yml/badge.svg)
 ## React form using React hook form
 
 Here you can see a modern form using tailwind, shadcn, react-hook-form.
