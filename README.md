@@ -1,3 +1,5 @@
+![Build Status](https://github.com/leofmoura/react-modern-form/actions/workflows/build.yml/badge.svg)
+
 ## React form using React hook form
 
 Here you can see a modern form using tailwind, shadcn, react-hook-form.
